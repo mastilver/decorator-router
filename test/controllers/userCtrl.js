@@ -1,30 +1,29 @@
-import { httpGet, httpPost, httpPut, httpDelete } from '../../index';
-
+import {httpGet, httpPost, httpPut, httpDelete} from '../../index';
 
 export default {
 
     @httpGet('/user')
-    getAllUsers(req, res) {
+    getAllUsers() {
         return 'getAllUsers';
     },
 
     @httpGet('/user/:id')
-    getUser(){
+    getUser() {
         return 'getUser';
     },
 
     @httpPost('/user')
-    createUser(){
+    createUser() {
         return 'createUser';
     },
 
     @httpPut('/user/:id')
-    updateUser(){
+    updateUser() {
         return 'updateUser';
     },
 
     @httpDelete('/user/:id')
-    deleteUser(){
+    deleteUser() {
         return 'deleteUser';
-    },
-}
+    }
+};

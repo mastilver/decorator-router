@@ -4,10 +4,9 @@ const urlSymbol = Symbol('url');
 const methodSymbol = Symbol('method');
 
 export default async function (patterns, stategy, ...params) {
-
     const stategyInstance = stategy(...params);
 
-    const paths = await globby(patterns)
+    const paths = await globby(patterns);
 
     paths.map(require)
         .forEach(obj => {
@@ -15,9 +14,9 @@ export default async function (patterns, stategy, ...params) {
                 .map(name => obj[name])
                 .forEach(action => {
                     stategyInstance({
-                        action: action,
+                        action,
                         url: action[urlSymbol],
-                        method: action[methodSymbol],
+                        method: action[methodSymbol]
                     });
                 });
         });
@@ -29,9 +28,9 @@ export const httpPut = decoratorFactory('put');
 export const httpDelete = decoratorFactory('delete');
 export const httpHead = decoratorFactory('head');
 
-function decoratorFactory(method){
-    return function decorator(url){
-        return function(target, name, descriptor){
+function decoratorFactory(method) {
+    return function decorator(url) {
+        return function (target, name, descriptor) {
             descriptor.value[urlSymbol] = url;
             descriptor.value[methodSymbol] = method;
         };

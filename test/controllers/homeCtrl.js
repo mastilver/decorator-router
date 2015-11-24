@@ -1,9 +1,9 @@
-import { httpGet } from '../../index';
+import {httpGet} from '../../index';
 
 export default {
 
     @httpGet('/')
-    getIndex(){
+    getIndex() {
         return 'ok';
-    },
-}
+    }
+};
