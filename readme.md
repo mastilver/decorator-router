@@ -17,9 +17,11 @@ Having a controller like `controller/homeCtrl.js`
 ```js
 import { httpGet } from 'decorator-router';
 
-@httpGet('/')
-function getIndex(req, res){
-    res.ok();
+export default {
+    @httpGet('/')
+    getIndex(req, res){
+        res.ok();
+    }
 }
 ```
 
