@@ -12,19 +12,28 @@ export default async function (patterns, stategy, ...params) {
     paths.map(require)
         .forEach(obj => {
             Object.keys(obj)
-                .map(x => obj[x])
-                .forEach(x => {
+                .map(name => obj[name])
+                .forEach(action => {
                     stategyInstance({
-                        url: x[urlSymbol],
-                        method: x[methodSymbol]
+                        action: action,
+                        url: action[urlSymbol],
+                        method: action[methodSymbol],
                     });
                 });
         });
 };
 
-export function httpGet(url){
-    return function(target, name, descriptor){
-        descriptor.value[urlSymbol] = url;
-        descriptor.value[methodSymbol] = 'get';
+export const httpGet = decoratorFactory('get');
+export const httpPost = decoratorFactory('post');
+export const httpPut = decoratorFactory('put');
+export const httpDelete = decoratorFactory('delete');
+export const httpHead = decoratorFactory('head');
+
+function decoratorFactory(method){
+    return function decorator(url){
+        return function(target, name, descriptor){
+            descriptor.value[urlSymbol] = url;
+            descriptor.value[methodSymbol] = method;
+        };
     };
 }
