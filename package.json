@@ -1,0 +1,28 @@
+{
+  "name": "decorator-router",
+  "version": "0.0.0",
+  "description": "framework agnostic router using es7 decorators",
+  "license": "MIT",
+  "repository": "mastilver/decorator-router",
+  "author": {
+    "name": "Thomas Sileghem",
+    "email": "th.sileghem@gmail.com",
+    "url": "mastilver.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.5.0"
+  }
+}
