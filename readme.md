@@ -1,4 +1,4 @@
-# decorator-router [![Build Status](https://travis-ci.org/mastilver/decorator-router.svg?branch=master)](https://travis-ci.org/mastilver/decorator-router)[![Coverage Status](https://coveralls.io/repos/mastilver/decorator-router/badge.svg?branch=master&service=github)](https://coveralls.io/github/mastilver/decorator-router?branch=master)
+# decorator-router [![Build Status](https://travis-ci.org/mastilver/decorator-router.svg?branch=master)](https://travis-ci.org/mastilver/decorator-router)
 
 > Framework agnostic router using es7 decorators
 
