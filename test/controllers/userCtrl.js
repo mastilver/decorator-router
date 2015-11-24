@@ -1,27 +1,30 @@
 import { httpGet, httpPost, httpPut, httpDelete } from '../../index';
 
 
-@httpGet('/user');
-function getAllUsers(req, res) {
-    res.ok('getAllUsers');
-}
+export default {
 
-@httpGet('/user/:id');
-function getUser(){
-    res.ok('getUser');
-}
+    @httpGet('/user')
+    getAllUsers(req, res) {
+        return 'getAllUsers';
+    }
 
-@httpPost('/user');
-function createUser(){
-    res.ok('createUser')
-}
+    @httpGet('/user/:id')
+    getUser(){
+        return 'getUser';
+    }
 
-@httpPut('/user/:id');
-function updateUser(){
-    res.ok('updateUser')
-}
+    @httpPost('/user')
+    createUser(){
+        return 'createUser';
+    }
 
-@httpDelete('/user/:id');
-function deleteUser(){
-    res.ok('deleteUser');
+    @httpPut('/user/:id')
+    updateUser(){
+        return 'updateUser';
+    }
+
+    @httpDelete('/user/:id')
+    deleteUser(){
+        return 'deleteUser';
+    }
 }
