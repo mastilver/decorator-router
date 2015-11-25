@@ -15,9 +15,8 @@
   },
   "scripts": {
     "test": "xo && ava",
-    "build": "npm run build:clean && npm run build:lib",
-    "build:clean": "rimraf build",
-    "build:lib": "babel index.js --out-dir build",
+    "prebuild": "rimraf build",
+    "build": "babel index.js --out-dir build",
     "prepublish": "npm run build"
   },
   "files": [
