@@ -1,5 +1,5 @@
-/index.js
-/test
-/.gitignore
-/.npmignore
-/travis.yml
+index.js
+test
+.gitignore
+.npmignore
+.travis.yml
