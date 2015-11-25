@@ -1,6 +1,6 @@
 {
   "name": "decorator-router",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "framework agnostic router using es7 decorators",
   "license": "MIT",
   "repository": "mastilver/decorator-router",
