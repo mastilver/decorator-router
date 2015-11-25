@@ -1,6 +1,6 @@
 {
   "name": "decorator-router",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "framework agnostic router using es7 decorators",
   "main": "build/index.js",
   "license": "MIT",
