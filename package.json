@@ -33,6 +33,9 @@
     "envs": [
       "node"
     ],
-    "space": 4
+    "space": 4,
+    "rules": {
+      "linebreak-style": 0
+    }
   }
 }

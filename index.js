@@ -2,6 +2,7 @@ import globby from 'globby';
 
 const urlSymbol = Symbol('url');
 const methodSymbol = Symbol('method');
+const isRouteSymbol = Symbol('isRoute');
 
 export default async function (patterns, stategy, ...params) {
     const stategyInstance = stategy(...params);
@@ -12,6 +13,7 @@ export default async function (patterns, stategy, ...params) {
         .forEach(obj => {
             Object.keys(obj)
                 .map(name => obj[name])
+                .filter(x => x[isRouteSymbol])
                 .forEach(action => {
                     stategyInstance({
                         action,
@@ -31,6 +33,7 @@ export const httpHead = decoratorFactory('head');
 function decoratorFactory(method) {
     return function decorator(url) {
         return function (target, name, descriptor) {
+            descriptor.value[isRouteSymbol] = true;
             descriptor.value[urlSymbol] = url;
             descriptor.value[methodSymbol] = method;
         };
