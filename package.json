@@ -21,7 +21,7 @@
     "prepublish": "npm run build"
   },
   "files": [
-    "index.js"
+    "build"
   ],
   "keywords": [
     ""
