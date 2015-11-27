@@ -43,6 +43,9 @@
     "space": 4,
     "rules": {
       "linebreak-style": 0
-    }
+    },
+    "ignores": [
+      "build/**"
+    ]
   }
 }
