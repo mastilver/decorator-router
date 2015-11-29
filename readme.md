@@ -12,20 +12,40 @@ $ npm install --save decorator-router
 
 ## Usage
 
-Having a controller like `controller/homeCtrl.js`
+Given a controller  `controller/homeCtrl.js`
 
 ```js
-import { httpGet } from 'decorator-router';
+import {httpGet, middlewareFactory} from 'decorator-router';
+
+const isLoggedIn = middlewareFactory(function(res, req, next){
+    /*   check if user is logged in   */
+    next();
+});
+
+const isRole = middlewareFactory(role => function(res, req, next){
+    /*   check if user have the right role   */
+    next();
+});
+
+const
 
 export default {
+
+    @isLoggedIn
     @httpGet('/')
     getIndex(req, res){
+        res.ok();
+    },
+
+    @isRole('admin')
+    @httpGet('/admin')
+    getAdminPortal(req, res){
         res.ok();
     }
 }
 ```
 
-You will register route that way
+You can register those routes by doing
 
 ```js
 import decoratorRouter = from 'decorator-router';
@@ -64,6 +84,18 @@ the strategy used to register routes. See [available strategies](#strategies)
 Type: `Array`
 
 This will be passed to instantiate the strategy.
+
+
+### middlewareFactory(middleware)
+
+Returns a decorator.
+
+## middleware
+
+*Required*  
+Type: `Function`
+
+Can be a middleware or a middleware factory depending if you need to pass parameters to your middleware or not.
 
 
 ### @httpGet(url)  

@@ -19,8 +19,11 @@ test('strategy should be called with the right route', async t => {
 test('strategy shoud be called for all the routes', async t => {
     const result = {};
 
-    const strategy = () => ({url, method, action}) => {
-        result[`${ method } ${ url }`] = action();
+    const strategy = () => ({url, method, action, middlewares}) => {
+        result[`${ method } ${ url }`] = {
+            actionResult: action(),
+            middlewares
+        };
     };
 
     await fn(path.join(__dirname, 'controllers/*Ctrl.js'), strategy);
@@ -29,10 +32,14 @@ test('strategy shoud be called for all the routes', async t => {
 
     t.is(nbRegistedRoutes, 6);
 
-    t.is('ok', result['get /']);
-    t.is('getAllUsers', result['get /user']);
-    t.is('getUser', result['get /user/:id']);
-    t.is('createUser', result['post /user']);
-    t.is('updateUser', result['put /user/:id']);
-    t.is('deleteUser', result['delete /user/:id']);
+    t.is('ok', result['get /'].actionResult);
+    t.is('getAllUsers', result['get /user'].actionResult);
+    t.is('getUser', result['get /user/:id'].actionResult);
+    t.is('createUser', result['post /user'].actionResult);
+    t.is('updateUser', result['put /user/:id'].actionResult);
+    t.is('deleteUser', result['delete /user/:id'].actionResult);
+
+    t.is('unauthorize', result['delete /user/:id'].middlewares[0]());
+
+    t.is('admin', result['post /user'].middlewares[0]());
 });

@@ -1,5 +1,8 @@
 import {httpGet, httpPost, httpPut, httpDelete} from '../../index';
 
+import noParamsMiddleware from '../middlewares/noParamsMiddleware';
+import paramsMiddleware from '../middlewares/paramsMiddleware';
+
 export default {
 
     @httpGet('/user')
@@ -12,6 +15,7 @@ export default {
         return 'getUser';
     },
 
+    @paramsMiddleware('admin')
     @httpPost('/user')
     createUser() {
         return 'createUser';
@@ -22,6 +26,7 @@ export default {
         return 'updateUser';
     },
 
+    @noParamsMiddleware
     @httpDelete('/user/:id')
     deleteUser() {
         return 'deleteUser';
