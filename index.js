@@ -20,7 +20,7 @@ export default async function (patterns, stategy, ...params) {
                         action,
                         url: action[urlSymbol],
                         method: action[methodSymbol],
-                        middlewares: action[middlewaresSymbol]
+                        middlewares: action[middlewaresSymbol] || []
                     });
                 });
         });

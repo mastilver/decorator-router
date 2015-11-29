@@ -40,6 +40,10 @@ test('strategy shoud be called for all the routes', async t => {
     t.is('deleteUser', result['delete /user/:id'].actionResult);
 
     t.is('unauthorize', result['delete /user/:id'].middlewares[0]());
-
     t.is('admin', result['post /user'].middlewares[0]());
+
+    t.same([], result['get /'].middlewares);
+    t.same([], result['get /user'].middlewares);
+    t.same([], result['get /user/:id'].middlewares);
+    t.same([], result['put /user/:id'].middlewares);
 });
