@@ -27,8 +27,6 @@ const isRole = middlewareFactory(role => function(res, req, next){
     next();
 });
 
-const
-
 export default {
 
     @isLoggedIn
